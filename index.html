@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Convert Money</title>
+</head>
+
+<body>
+
+
+    <img class="logo-Money" src="Images/logo 1.png" alt="logomoney">
+
+
+    <main>
+
+        <label>
+            Converter <b>de</b>
+            <select>
+                <option>
+                    R$ Real Brasileiro
+                </option>
+            </select>
+
+        </label>
+
+
+        <label>
+            Converter <b>para</b>
+            <select class="currency-select-value">
+                <option value="dolar">Dólar Americano</option>;
+                <option value="euro">Euro</option>;
+                <option value="libra">Libra</option>
+               
+
+            </select>
+
+        </label>
+
+        <label>
+            Valor
+            <input class="input-currency" placeholder="Valor">
+
+
+        </label>
+
+        <button class="Convert-button">Converter</button>
+
+
+
+        <section>
+
+            <div class="moeda">
+
+                <img src="Images/brasil 2.png" alt="logo-moeda-brasil">
+                <p class="currency">Real</p>
+                <p class="currency-value-to-convert">R$ 0,00</p>
+
+            </div>
+
+            <div class=arrow>
+
+                <img src="Images/arrow.png" alt="arrow">
+
+
+
+            </div>
+
+
+
+
+
+            <div class="moeda">
+
+                <img class="currency-img" src="Images/estados-unidos (1) 1.png" alt="logo-moeda-eua">
+                <p class="currency" id="currency-name">Dólar</p>
+                <p class="currency-value-converted">$US 0,00</p>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+        <script>
+
+            var select = document.querySelector(".currency-select-value")
+            var convertButton = document.querySelector(".Convert-button")
+
+
+
+
+            convertButton.addEventListener("click", () => {
+
+                console.log(select.value);
+
+
+
+
+
+                var inputCurrencyValue = document.querySelector(".input-currency").value
+
+                var currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+
+                var currencuValueConverted = document.querySelector(".currency-value-converted")
+
+
+
+                var dolarToday = 5.23
+                var euroToday = 5.60
+                var libraToday = 6.47
+               
+                var convertedValues =
+
+                    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL"
+                    }).format(inputCurrencyValue)
+
+
+                if (select.value == "dolar") {
+                    currencuValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD"
+
+                    }).format(inputCurrencyValue / dolarToday)
+
+                }
+
+
+                if (select.value == "euro") {
+
+                    currencuValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+
+                        style: "currency",
+                        currency: "EUR"
+
+                    }).format(inputCurrencyValue / euroToday)
+
+                }
+
+                if (select.value == "libra") {
+
+                    currencuValueConverted.innerHTML = new Intl.NumberFormat("en-UK", {
+
+                        style: "currency",
+                        currency: "GBP"
+
+
+                    }).format(inputCurrencyValue / libraToday)
+
+
+                  
+
+
+
+
+                    
+
+
+
+
+                }
+
+
+            })
+
+
+
+            function changeCurrency() {
+
+                var currencyName = document.getElementById("currency-name")
+                var currencyImage = document.querySelector(".currency-img")
+
+
+
+                if (select.value == "dolar") {
+
+                    currencyName.innerHTML = "Dólar"
+                    currencyImage.src = "./Images/estados-unidos (1) 1.png"
+
+                }
+
+
+                if (select.value == "euro") {
+
+                    currencyName.innerHTML = "Euro"
+                    currencyImage.src = "./images/libra 2.png"
+
+                }
+
+                if (select.value == "libra") {
+
+                    currencyName.innerHTML = "libra"
+                    currencyImage.src = "./images/libra 1.png"
+
+                }
+
+                if (select.value == "bitcoin") {
+
+
+                    currencyName.innerHTML = "Bitcoin"
+                    currencyImage.src = "./images/bitcoin 1.png"
+
+
+
+                }
+
+
+
+
+
+            }
+            select.addEventListener("change", changeCurrency)
+
+
+
+        </script>
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
